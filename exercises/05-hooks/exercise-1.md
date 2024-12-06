@@ -1,134 +1,165 @@
-# Exercise 5: Git Hooks
-## Automating Git Workflows with Hooks
+# 🎣 Exercise 5: Git Hooks
 
-### 🎯 Objective
-Learn how to use Git hooks to automate tasks and enforce standards in your Git workflow.
+[![Level](https://img.shields.io/badge/level-advanced-red.svg)](https://github.com/AmirHaytham/git-a-head)
+[![Time](https://img.shields.io/badge/time-60%20minutes-blue.svg)](https://github.com/AmirHaytham/git-a-head)
+[![Category](https://img.shields.io/badge/category-hooks-purple.svg)](https://github.com/AmirHaytham/git-a-head)
 
-### 📋 Prerequisites
-- Basic Git knowledge
-- Basic shell scripting
-- Completed previous exercises
+> Learn how to automate Git workflows using hooks
 
-### 🔨 Part 1: Pre-commit Hook
+## 🎯 Objectives
+By completing this exercise, you will learn to:
+- 🔄 Create custom Git hooks
+- 🛠️ Automate Git workflows
+- 🧪 Implement pre-commit checks
+- 📊 Add commit message validation
+- 🔍 Set up automated testing
 
-#### 1. Create Basic Pre-commit Hook
+## 📋 Prerequisites
+- ✅ Strong Git fundamentals
+- ✅ Basic shell scripting
+- ✅ Understanding of Git internals
+- ✅ Completed previous exercises
+
+## 🚀 Steps
+
+### 1️⃣ Setup Hooks Directory
 ```bash
 # Navigate to hooks directory
 cd .git/hooks
 
-# Create pre-commit hook
-touch pre-commit
-chmod +x pre-commit
+# Create backup of sample hooks
+mkdir samples
+mv *.sample samples/
 ```
 
-#### 2. Add Code Quality Check
-Add to `pre-commit`:
+### 2️⃣ Create Pre-commit Hook
 ```bash
+# Create pre-commit hook
+cat > pre-commit << 'EOF'
 #!/bin/bash
 
 echo "🔍 Running pre-commit checks..."
-
-# Check for Python syntax errors
-for file in $(git diff --cached --name-only | grep ".py$")
-do
-    if [ -f $file ]; then
-        python -m py_compile $file
-        if [ $? -ne 0 ]; then
-            echo "❌ Python syntax error in $file"
-            exit 1
-        fi
-    fi
-done
 
 # Check for trailing whitespace
 if git diff --cached --check; then
     echo "✅ No trailing whitespace found"
 else
-    echo "❌ Trailing whitespace found"
+    echo "❌ Found trailing whitespace"
     exit 1
 fi
 
-echo "✅ All checks passed!"
+# Run tests if they exist
+if [ -f "pytest" ]; then
+    echo "🧪 Running tests..."
+    python -m pytest
+fi
+
+echo "✨ Pre-commit checks passed!"
 exit 0
+EOF
+
+chmod +x pre-commit
 ```
 
-### 🔨 Part 2: Commit-msg Hook
-
-#### 1. Create Commit Message Hook
+### 3️⃣ Create Commit-msg Hook
 ```bash
 # Create commit-msg hook
-touch .git/hooks/commit-msg
-chmod +x .git/hooks/commit-msg
-```
-
-#### 2. Add Commit Message Validation
-Add to `commit-msg`:
-```bash
+cat > commit-msg << 'EOF'
 #!/bin/bash
 
-commit_msg_file=$1
-commit_msg=$(cat $commit_msg_file)
+commit_msg=$(cat "$1")
+pattern="^(feat|fix|docs|style|refactor|test|chore):.+$"
 
-# Check for emoji prefix
-if ! echo "$commit_msg" | grep -qE "^(🎉|✨|🐛|📝|♻️|🔧|🔥|✅|🔒|⬆️|⬇️|👷|📦) .*$"; then
-    echo "❌ Commit message must start with an emoji"
-    echo "Valid emojis: 🎉 ✨ 🐛 📝 ♻️ 🔧 🔥 ✅ 🔒 ⬆️ ⬇️ 👷 📦"
+if [[ $commit_msg =~ $pattern ]]; then
+    echo "✅ Commit message format is valid"
+    exit 0
+else
+    echo "❌ Invalid commit message format"
+    echo "Format should be: <type>: <description>"
+    echo "Types: feat, fix, docs, style, refactor, test, chore"
     exit 1
 fi
+EOF
 
-# Check message length
-if [ ${#commit_msg} -lt 10 ]; then
-    echo "❌ Commit message too short"
-    exit 1
-fi
-
-echo "✅ Commit message format valid!"
-exit 0
+chmod +x commit-msg
 ```
 
-### 🔨 Part 3: Pre-push Hook
-
-#### 1. Create Pre-push Hook
+### 4️⃣ Create Pre-push Hook
 ```bash
 # Create pre-push hook
-touch .git/hooks/pre-push
-chmod +x .git/hooks/pre-push
-```
-
-#### 2. Add Test Runner
-Add to `pre-push`:
-```bash
+cat > pre-push << 'EOF'
 #!/bin/bash
 
-echo "🧪 Running tests before push..."
+echo "🚀 Running pre-push checks..."
 
-# Run Python tests
-python -m pytest
-if [ $? -ne 0 ]; then
-    echo "❌ Tests failed, push aborted"
-    exit 1
+# Run comprehensive tests
+echo "🧪 Running full test suite..."
+python -m pytest --verbose
+
+# Check code coverage
+if [ -f "coverage" ]; then
+    echo "📊 Checking code coverage..."
+    coverage run -m pytest
+    coverage report --fail-under=80
 fi
 
-echo "✅ All tests passed!"
+echo "✨ All pre-push checks passed!"
 exit 0
+EOF
+
+chmod +x pre-push
 ```
 
-### ✅ Practice Tasks
-1. Set up pre-commit hook
-2. Create commit message template
-3. Implement pre-push tests
-4. Test each hook's functionality
+## ✅ Expected Outcomes
+- 🔄 Automated pre-commit checks
+- 📝 Standardized commit messages
+- 🧪 Automated test execution
+- 🔍 Code quality enforcement
 
-### 🎓 Learning Outcomes
-- Git hooks setup
-- Automated quality checks
-- Commit message standards
-- Test automation
-- Workflow customization
+## 🔍 Testing the Hooks
+1. Make changes to files
+2. Try committing with invalid message
+3. Try pushing with failing tests
+4. Verify hook behaviors
 
-### 🔍 Extra Challenges
-1. Add code formatting check
-2. Implement branch name validation
-3. Create custom hook combinations
-4. Add performance benchmarks
-5. Implement security checks
+## 🎯 Extra Challenges
+Try implementing:
+- [ ] Code formatting checks
+- [ ] Branch name validation
+- [ ] Issue number verification
+- [ ] Custom error messages
+- [ ] Hook bypass mechanism
+
+## 🆘 Troubleshooting
+Common issues and solutions:
+- 🚫 Hook not executing: Check permissions
+- ❌ Script errors: Debug with set -x
+- ⚠️ Path issues: Use full paths
+- 🔄 Hook bypass: Use --no-verify
+
+## 🔧 Hook Types
+| Hook | Timing | Common Uses |
+|------|---------|------------|
+| pre-commit | Before commit creation | Code quality checks |
+| commit-msg | After commit message written | Message validation |
+| pre-push | Before push to remote | Comprehensive testing |
+| post-commit | After commit creation | Notifications |
+
+## 📚 Further Reading
+- [Git Hooks Documentation](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+- [Sample Git Hooks](https://github.com/git/git/tree/master/templates)
+- [Hook Best Practices](https://www.atlassian.com/git/tutorials/git-hooks)
+
+## 🔄 Clean Up
+```bash
+# Disable hooks if needed
+cd .git/hooks
+mv pre-commit pre-commit.disabled
+mv commit-msg commit-msg.disabled
+mv pre-push pre-push.disabled
+```
+
+---
+<p align="center">
+Created by <a href="https://github.com/AmirHaytham">Amir Haytham</a> for the Git-A-Head Workshop
+</p>

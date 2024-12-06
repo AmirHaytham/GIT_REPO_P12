@@ -1,13 +1,19 @@
-# Exercise 4: CI/CD with GitHub Actions
+# 🚀 Exercise 4: CI/CD with GitHub Actions
 ## Setting up Continuous Integration and Deployment
+
+[![Level](https://img.shields.io/badge/level-advanced-red.svg)](https://github.com/AmirHaytham/git-a-head)
+[![Time](https://img.shields.io/badge/time-90%20minutes-blue.svg)](https://github.com/AmirHaytham/git-a-head)
+[![Category](https://img.shields.io/badge/category-CI%2FCD-brightgreen.svg)](https://github.com/AmirHaytham/git-a-head)
+
+> Learn how to implement Continuous Integration and Continuous Deployment using GitHub Actions
 
 ### 🎯 Objective
 Learn how to implement CI/CD pipelines using GitHub Actions and Git.
 
 ### 📋 Prerequisites
-- GitHub account
-- Basic Git knowledge
-- Python basics (for sample application)
+- ✅ GitHub account
+- ✅ Basic Git knowledge
+- ✅ Python basics (for sample application)
 
 ### 🔨 Part 1: Basic CI Pipeline
 
@@ -127,3 +133,17 @@ jobs:
 3. Create Docker deployment
 4. Add security scanning
 5. Implement automatic version bumping
+
+## 📊 CI/CD Pipeline Visualization
+```
+[Push] --> [Run Tests] --> [Build] --> [Deploy]
+   │           │            │           │
+   └─────────┐ └────────┐  └───────┐   │
+             ▼          ▼          ▼   ▼
+         [Linting] [Security] [Coverage] [Monitoring]
+```
+
+---
+<p align="center">
+Created by <a href="https://github.com/AmirHaytham">Amir Haytham</a> for the Git-A-Head Workshop
+</p>
