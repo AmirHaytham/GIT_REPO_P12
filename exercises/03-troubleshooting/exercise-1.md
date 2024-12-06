@@ -1,13 +1,13 @@
-# Exercise 3: Git Troubleshooting Scenarios
-## Common Git Problems and Solutions
+# 🔧 Exercise 3: Git Troubleshooting Scenarios
+## 🎯 Common Git Problems and Solutions
 
 ### 🎯 Objective
 Learn how to handle common Git problems and fix mistakes.
 
 ### 📋 Prerequisites
-- Basic Git knowledge
-- Understanding of branching
-- Completed previous exercises
+- ✅ Basic Git knowledge
+- ✅ Understanding of branching
+- ✅ Completed previous exercises
 
 ### 🔨 Scenario 1: Fixing Bad Commits
 
@@ -90,13 +90,17 @@ git merge temp-recovery
 4. Fix a detached HEAD state
 
 ### 🎓 Learning Outcomes
-- Problem-solving in Git
-- Recovery techniques
-- Conflict resolution
-- Understanding Git internals
+- 🔍 Problem-solving in Git
+- 🔄 Recovery techniques
+- 🔀 Conflict resolution
+- 📊 Understanding Git internals
 
 ### 🔍 Extra Challenges
 1. Reset a pushed commit
 2. Clean up multiple bad commits
 3. Resolve complex merge conflicts
 4. Recover deleted branches
+
+[![Level](https://img.shields.io/badge/level-advanced-red.svg)](https://github.com/AmirHaytham/git-a-head)
+[![Time](https://img.shields.io/badge/time-60%20minutes-blue.svg)](https://github.com/AmirHaytham/git-a-head)
+[![Category](https://img.shields.io/badge/category-troubleshooting-red.svg)](https://github.com/AmirHaytham/git-a-head)
