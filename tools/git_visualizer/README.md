@@ -1,47 +1,67 @@
-# Git Visualizer Pro
-## Interactive Git Repository Visualization Tool
+# 📊 Git Visualizer Pro
 
-### 🎯 Features
-- Interactive graph visualization of Git history
-- Branch and commit visualization
-- Commit details display
-- Real-time updates
-- Branch filtering
+[![Python 3.x](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/downloads/)
+[![NetworkX](https://img.shields.io/badge/NetworkX-3.1-green.svg)](https://networkx.org/)
+[![Matplotlib](https://img.shields.io/badge/Matplotlib-3.7-orange.svg)](https://matplotlib.org/)
 
-### 📋 Requirements
-- Python 3.7+
-- NetworkX
-- Matplotlib
-- Tkinter
+> A powerful Git repository visualization tool I developed for the Git-A-Head workshop, helping students understand commit history and branch relationships visually.
 
-### 🚀 Installation
-```bash
-# Install dependencies
-pip install -r requirements.txt
+## 🌟 Features
+- 📈 Dynamic repository visualization
+- 🔄 Real-time commit history graphing
+- 🌳 Branch relationship mapping
+- 🎨 Customizable graph layouts
+- 🔍 Commit message preview
+
+## 📋 Requirements
+```
+python >= 3.x
+networkx >= 3.1
+matplotlib >= 3.7
 ```
 
-### 💻 Usage
-```bash
-# Run the visualizer
-python visualizer.py
-```
+## 🚀 Quick Start
+1. Run the visualizer:
+   ```bash
+   python visualizer.py
+   ```
 
-### 🎮 Controls
-1. **Refresh Button**: Updates the graph with latest repository changes
-2. **Branch Filter**: Filter commits by branch
-3. **Graph Interaction**: 
-   - Zoom: Mouse wheel
-   - Pan: Click and drag
-   - Select: Click on commit node
+2. The tool will:
+   - Scan your Git repository
+   - Generate a visual graph
+   - Show commit relationships
+   - Display branch structures
 
-### 🔍 Visualization Elements
-- **Nodes**: Represent commits
-- **Edges**: Show parent-child relationships
-- **Colors**: Indicate different branches
-- **Labels**: Show commit messages and hashes
+## 🎨 Visualization Features
+- Commit nodes with messages
+- Branch connections
+- Merge relationships
+- Time-based layouts
+- Interactive zooming
 
-### 💡 Tips
-1. Keep window size reasonable for best visualization
-2. Use branch filter for complex repositories
-3. Hover over nodes to see full commit details
-4. Regular refresh recommended for active repositories
+## 🔧 Configuration
+Customize your view with:
+- Different layout algorithms
+- Node sizes and colors
+- Edge styles
+- Label formats
+- Window dimensions
+
+## 💡 Tips
+- Zoom in/out for detail
+- Hover over nodes for info
+- Use pan for navigation
+- Export graphs as images
+
+## 🤝 Contributing
+Found a bug or have a suggestion? Feel free to:
+- Open an issue
+- Submit a pull request
+- Suggest improvements
+
+Visit the [main repository](https://github.com/AmirHaytham/git-a-head) for more information.
+
+---
+<p align="center">
+Created by <a href="https://github.com/AmirHaytham">Amir Haytham</a> for the Git-A-Head Workshop
+</p>
