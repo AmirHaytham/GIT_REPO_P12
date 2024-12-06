@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo "🔍 Running pre-commit checks..."
+
+# Check for Python syntax errors
+for file in $(git diff --cached --name-only | grep ".py$")
+do
+    if [ -f $file ]; then
+        python -m py_compile $file
+        if [ $? -ne 0 ]; then
+            echo "❌ Python syntax error in $file"
+            exit 1
+        fi
+    fi
+done
+
+# Check for trailing whitespace
+if git diff --cached --check; then
+    echo "✅ No trailing whitespace found"
+else
+    echo "❌ Trailing whitespace found"
+    exit 1
+fi
+
+echo "✅ All checks passed!"
+exit 0
