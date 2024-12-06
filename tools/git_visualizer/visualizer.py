@@ -1,92 +1,89 @@
-import tkinter as tk
-from tkinter import ttk
 import networkx as nx
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import subprocess
-import json
+from datetime import datetime
 
-class GitVisualizer:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Git Visualizer Pro")
-        
-        # Setup main container
-        self.main_frame = ttk.Frame(root, padding="10")
-        self.main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
-        
-        # Create graph
-        self.fig, self.ax = plt.subplots(figsize=(10, 6))
-        self.canvas = FigureCanvasTkAgg(self.fig, master=self.main_frame)
-        self.canvas.get_tk_widget().grid(row=0, column=0, columnspan=2)
-        
-        # Controls
-        self.controls_frame = ttk.LabelFrame(self.main_frame, text="Controls", padding="5")
-        self.controls_frame.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E))
-        
-        # Refresh button
-        self.refresh_btn = ttk.Button(self.controls_frame, text="Refresh", command=self.refresh_graph)
-        self.refresh_btn.grid(row=0, column=0, padx=5)
-        
-        # Branch filter
-        self.branch_var = tk.StringVar(value="all")
-        self.branch_filter = ttk.Combobox(self.controls_frame, textvariable=self.branch_var)
-        self.branch_filter.grid(row=0, column=1, padx=5)
-        
-        # Initialize graph
-        self.refresh_graph()
-        
-    def get_git_log(self):
-        """Get git log in JSON format"""
-        cmd = [
-            "git", "log", "--all", "--decorate", "--oneline", "--graph",
-            "--pretty=format:{%n  \"commit\": \"%H\",%n  \"author\": \"%an\",%n  \"date\": \"%ad\",%n  \"message\": \"%s\"%n}"
-        ]
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        return result.stdout
+def get_git_log():
+    """Get git log information"""
+    cmd = [
+        "git", "log", "--all", "--pretty=format:%H|%an|%ad|%s"
+    ]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.stdout
+
+def visualize_git_history():
+    """Visualize git repository history"""
+    # Create directed graph
+    G = nx.DiGraph()
     
-    def build_graph(self):
-        """Build networkx graph from git log"""
-        G = nx.DiGraph()
-        log_data = self.get_git_log()
+    # Get git log data
+    log_data = get_git_log()
+    
+    try:
+        # Parse commits
+        commits = []
+        for line in log_data.split('\n'):
+            if line.strip():
+                parts = line.split('|')
+                if len(parts) == 4:
+                    commit = {
+                        "hash": parts[0],
+                        "author": parts[1],
+                        "date": parts[2],
+                        "message": parts[3]
+                    }
+                    commits.append(commit)
         
-        # Parse log and build graph
-        commits = [json.loads(commit) for commit in log_data.split("\n\n") if commit.strip()]
-        
+        # Add nodes and edges
         for commit in commits:
-            G.add_node(commit["commit"][:7], 
+            short_hash = commit["hash"][:7]
+            G.add_node(short_hash, 
                       message=commit["message"],
                       author=commit["author"],
                       date=commit["date"])
         
-        # Add edges based on parent-child relationships
+        # Add edges based on commit order
         for i in range(len(commits)-1):
-            G.add_edge(commits[i]["commit"][:7], commits[i+1]["commit"][:7])
+            G.add_edge(commits[i]["hash"][:7], commits[i+1]["hash"][:7])
         
-        return G
-    
-    def refresh_graph(self):
-        """Refresh the graph visualization"""
-        self.ax.clear()
-        G = self.build_graph()
+        # Create visualization with larger figure size
+        plt.figure(figsize=(20, 12))
         
-        # Draw graph
-        pos = nx.spring_layout(G)
-        nx.draw(G, pos, ax=self.ax, with_labels=True, 
-                node_color='lightblue', node_size=1000, 
-                font_size=8, font_weight='bold')
+        # Use hierarchical layout for better commit flow visualization
+        pos = nx.kamada_kawai_layout(G)
         
-        # Add commit messages as labels
-        labels = nx.get_node_attributes(G, 'message')
-        nx.draw_networkx_labels(G, pos, labels, font_size=6)
+        # Increase spacing between nodes
+        pos = {node: (coord[0] * 1.5, coord[1] * 1.5) for node, coord in pos.items()}
         
-        self.canvas.draw()
-    
-    def run(self):
-        """Start the visualizer"""
-        self.root.mainloop()
+        # Draw graph with improved visual parameters
+        nx.draw(G, pos, 
+               node_color='lightblue',
+               node_size=3000,  # Increased node size
+               font_size=10,    # Increased font size
+               font_weight='bold',
+               with_labels=True,
+               arrows=True,
+               edge_color='gray',
+               width=2,
+               arrowsize=20,
+               alpha=0.7)       # Added transparency
+        
+        # Add commit messages as labels with better formatting
+        labels = {node: f"{node}\n{G.nodes[node]['message'][:30]}..." 
+                 for node in G.nodes()}
+        
+        # Draw labels with offset to prevent overlap
+        label_pos = {node: (coord[0], coord[1] - 0.08) for node, coord in pos.items()}
+        nx.draw_networkx_labels(G, label_pos, labels, font_size=8)
+        
+        plt.title("Git Repository Visualization\nCommit History Graph", 
+                 fontsize=16, pad=20)
+        plt.axis('off')
+        plt.tight_layout(pad=2.0)  # Increased padding
+        plt.show()
+        
+    except Exception as e:
+        print(f"Error visualizing git history: {e}")
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = GitVisualizer(root)
-    app.run()
+    visualize_git_history()
