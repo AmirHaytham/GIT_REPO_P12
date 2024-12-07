@@ -19,10 +19,10 @@
 ## 🚀 Workshop Innovation Points
 
 ### 🎮 Interactive Learning Platform
-- 📊 Custom Git visualization tool
+- 📊 [Git Visualizer Pro](https://github.com/AmirHaytham/git-visualizer) for repository visualization
+- 🛠️ [Conflict Resolver](https://github.com/AmirHaytham/git-conflict-resolver) for merge conflicts
+- 🌳 [Branch Simulator](https://github.com/AmirHaytham/git-branch-simulator) for practice
 - 👥 Real-time collaboration environment
-- 🎯 Interactive command playground
-- 🌳 Visual branching simulator
 - ⚡ Instant feedback system
 
 ### 🏆 Gamification Elements
@@ -157,9 +157,9 @@ git config --global user.signingkey YOUR_KEY
 ## 🛠 Innovative Tools & Features
 
 ### 🎮 Interactive Learning Tools
-- 📊 Git Visualizer Pro (custom tool)
-- 🌳 Branch Strategy Simulator
-- 🚨 Conflict Resolution Trainer
+- 📊 [Git Visualizer Pro](https://github.com/AmirHaytham/git-visualizer) for repository visualization
+- 🌳 [Branch Simulator](https://github.com/AmirHaytham/git-branch-simulator) for practice
+- 🚨 [Conflict Resolver](https://github.com/AmirHaytham/git-conflict-resolver) for merge conflicts
 - 📊 Performance Analysis Dashboard
 - 🛡️ Security Audit Tool
 

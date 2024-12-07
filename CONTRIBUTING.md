@@ -31,9 +31,6 @@ cd git-a-head
 # Create virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r tools/requirements.txt
 ```
 
 ### 3️⃣ Create Feature Branch
@@ -58,8 +55,8 @@ git checkout -b feature/your-feature-name
    pytest
    
    # Check code style
-   pylint tools/*.py
-   black tools/
+   pylint *.py
+   black .
    ```
 
 4. 📚 **Update Documentation**

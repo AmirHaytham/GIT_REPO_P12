@@ -27,7 +27,7 @@
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-features">Features</a> •
   <a href="#-workshop-structure">Workshop</a> •
-  <a href="#-tools">Tools</a> •
+  <a href="#-related-tools">Related Tools</a> •
   <a href="#-exercises">Exercises</a> •
   <a href="#-contributing">Contributing</a>
 </p>
@@ -40,9 +40,6 @@ git clone https://github.com/AmirHaytham/git-a-head.git
 
 # Enter the project directory
 cd git-a-head
-
-# Install dependencies
-pip install -r tools/requirements.txt
 
 # Start with Day 1
 cd exercises/01-basics
@@ -61,11 +58,11 @@ cd exercises/01-basics
       </ul>
     </td>
     <td>
-      <h3>🛠️ Custom Tools</h3>
+      <h3>🛠️ Related Tools</h3>
       <ul>
-        <li>Git Visualizer Pro</li>
-        <li>Conflict Resolver</li>
-        <li>Interactive learning</li>
+        <li><a href="https://github.com/AmirHaytham/git-visualizer">Git Visualizer Pro</a></li>
+        <li><a href="https://github.com/AmirHaytham/git-conflict-resolver">Conflict Resolver</a></li>
+        <li><a href="https://github.com/AmirHaytham/git-branch-simulator">Branch Simulator</a></li>
       </ul>
     </td>
   </tr>
@@ -136,25 +133,18 @@ cd exercises/01-basics
 - [Advanced Tools](content/day5/README.md#tools)
 </details>
 
-## 🛠️ Tools
+## 🛠️ Related Tools
 
-### Git Visualizer Pro
-<p align="center">
-  <img src="tools/git_visualizer/screenshots/main.png" alt="Git Visualizer Screenshot" width="600"/>
-</p>
+Our workshop is enhanced by these companion tools (available in separate repositories):
 
-```bash
-python tools/git_visualizer/visualizer.py
-```
+### [Git Visualizer Pro](https://github.com/AmirHaytham/git-visualizer)
+Interactive visualization tool for Git repositories. Helps understand complex branching structures and commit history.
 
-### Conflict Resolver
-<p align="center">
-  <img src="tools/conflict_resolver/screenshots/main.png" alt="Conflict Resolver Screenshot" width="600"/>
-</p>
+### [Conflict Resolver](https://github.com/AmirHaytham/git-conflict-resolver)
+GUI tool to help resolve merge conflicts with ease. Perfect for learning conflict resolution strategies.
 
-```bash
-python tools/conflict_resolver/resolver.py
-```
+### [Branch Simulator](https://github.com/AmirHaytham/git-branch-simulator)
+Educational tool for practicing Git branching strategies in a safe environment.
 
 ## 📚 Exercises
 

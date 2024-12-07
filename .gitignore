@@ -68,3 +68,6 @@ tools/__pycache__/
 tools/*.pyc
 tools/test/__pycache__/
 tools/test/*.pyc
+
+# Tools directory
+tools/
