@@ -46,44 +46,50 @@ cd exercises/01-basics
 
 ## ✨ Features
 
+<div align="center">
 <table>
-  <tr>
-    <td>
-      <h3>🎯 Practical Learning</h3>
-      <ul>
-        <li>Hands-on exercises</li>
-        <li>Real-world scenarios</li>
-        <li>Progressive difficulty</li>
-      </ul>
-    </td>
-    <td>
-      <h3>🤝 Community Driven</h3>
-      <ul>
-        <li>Open source</li>
-        <li>Contributor friendly</li>
-        <li>Regular updates</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h3>📚 Rich Content</h3>
-      <ul>
-        <li>Detailed documentation</li>
-        <li>Best practices</li>
-        <li>Tips and tricks</li>
-      </ul>
-    </td>
-    <td>
-      <h3>🎓 Professional Training</h3>
-      <ul>
-        <li>Industry standards</li>
-        <li>Best practices</li>
-        <li>Real scenarios</li>
-      </ul>
-    </td>
-  </tr>
+<tr>
+<td width="50%" align="center">
+<img width="48" src="assets/icons/target.svg" alt="Practical Learning">
+<h3>🎯 Practical Learning</h3>
+<p align="left" style="padding: 0 20px">
+• Hands-on exercises<br>
+• Real-world scenarios<br>
+• Progressive difficulty
+</p>
+</td>
+<td width="50%" align="center">
+<img width="48" src="assets/icons/community.svg" alt="Community Driven">
+<h3>🤝 Community Driven</h3>
+<p align="left" style="padding: 0 20px">
+• Open source<br>
+• Contributor friendly<br>
+• Regular updates
+</p>
+</td>
+</tr>
+<tr>
+<td width="50%" align="center">
+<img width="48" src="assets/icons/book.svg" alt="Rich Content">
+<h3>📚 Rich Content</h3>
+<p align="left" style="padding: 0 20px">
+• Detailed documentation<br>
+• Best practices<br>
+• Tips and tricks
+</p>
+</td>
+<td width="50%" align="center">
+<img width="48" src="assets/icons/graduation.svg" alt="Professional Training">
+<h3>🎓 Professional Training</h3>
+<p align="left" style="padding: 0 20px">
+• Industry standards<br>
+• Best practices<br>
+• Real scenarios
+</p>
+</td>
+</tr>
 </table>
+</div>
 
 ## 📅 Workshop Structure
 
