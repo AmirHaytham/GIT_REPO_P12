@@ -27,7 +27,6 @@
   <a href="#-quick-start">Quick Start</a> •
   <a href="#-features">Features</a> •
   <a href="#-workshop-structure">Workshop</a> •
-  <a href="#-related-tools">Related Tools</a> •
   <a href="#-exercises">Exercises</a> •
   <a href="#-contributing">Contributing</a>
 </p>
@@ -58,11 +57,11 @@ cd exercises/01-basics
       </ul>
     </td>
     <td>
-      <h3>🛠️ Related Tools</h3>
+      <h3>🤝 Community Driven</h3>
       <ul>
-        <li><a href="https://github.com/AmirHaytham/git-visualizer">Git Visualizer Pro</a></li>
-        <li><a href="https://github.com/AmirHaytham/git-conflict-resolver">Conflict Resolver</a></li>
-        <li><a href="https://github.com/AmirHaytham/git-branch-simulator">Branch Simulator</a></li>
+        <li>Open source</li>
+        <li>Contributor friendly</li>
+        <li>Regular updates</li>
       </ul>
     </td>
   </tr>
@@ -76,11 +75,11 @@ cd exercises/01-basics
       </ul>
     </td>
     <td>
-      <h3>🤝 Community Driven</h3>
+      <h3>🎓 Professional Training</h3>
       <ul>
-        <li>Open source</li>
-        <li>Contributor friendly</li>
-        <li>Regular updates</li>
+        <li>Industry standards</li>
+        <li>Best practices</li>
+        <li>Real scenarios</li>
       </ul>
     </td>
   </tr>
@@ -130,21 +129,7 @@ cd exercises/01-basics
 - [Custom Git Hooks](content/day5/README.md#git-hooks)
 - [Workflow Automation](content/day5/README.md#automation)
 - [Team Collaboration](content/day5/README.md#collaboration)
-- [Advanced Tools](content/day5/README.md#tools)
 </details>
-
-## 🛠️ Related Tools
-
-Our workshop is enhanced by these companion tools (available in separate repositories):
-
-### [Git Visualizer Pro](https://github.com/AmirHaytham/git-visualizer)
-Interactive visualization tool for Git repositories. Helps understand complex branching structures and commit history.
-
-### [Conflict Resolver](https://github.com/AmirHaytham/git-conflict-resolver)
-GUI tool to help resolve merge conflicts with ease. Perfect for learning conflict resolution strategies.
-
-### [Branch Simulator](https://github.com/AmirHaytham/git-branch-simulator)
-Educational tool for practicing Git branching strategies in a safe environment.
 
 ## 📚 Exercises
 
